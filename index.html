@@ -1,33 +1,99 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>بوابة فرعون - المحروسة</title><style>body{background:#070f1e;color:#e8dcc0;font-family:Tajawal,system-ui;margin:0;padding:20px}h1{color:#d4af37;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin:20px auto}.card{background:#0c1a33;border:1px solid #d4af3744;border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:.2s}.card:hover{border-color:#d4af37;transform:translateY(-2px)}.card b{color:#d4af37;display:block;margin-top:10px}.sec{display:none;max-width:800px;margin:20px auto;background:#0c1a33;padding:20px;border-radius:16px}.sec.active{display:block}input,textarea{width:100%;padding:12px;margin:8px 0;background:#070f1e;border:1px solid #d4af37;color:#fff;border-radius:8px}button{background:#d4af37;color:#070f1e;border:0;padding:12px 20px;border-radius:8px;font-weight:700;cursor:pointer;margin:4px}button:hover{background:#e8c44a}</style>
-<h1>بوابة فرعون — المحروسة</h1><p style="text-align:center">بوابة Teos Desktop Portal — مفتوحة للجميع · بدون قفل · الشهر المجاني بموافقة الإدارة</p>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوابة فرعون — المحروسة السيادية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d4af37;--gold2:#ffd700;--blue:#00e5ff;--bg:#040813;--panel:#050c1a;--line:#0d2748;--text:#f0e6cf;--mut:#9fb0c9}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:radial-gradient(circle at 50% 40%,#0d2754 0%,#040813 75%),linear-gradient(rgba(7,18,38,.8) 2px,transparent 2px),linear-gradient(90deg,rgba(7,18,38,.8) 2px,transparent 2px);background-size:100% 100%,40px 40px,40px 40px;color:var(--text);font-family:'Tajawal',system-ui,sans-serif;line-height:1.7;min-height:100vh;padding:40px 16px}
+.wrap{max-width:950px;margin:0 auto}
+header{text-align:center;margin-bottom:30px}
+h1{color:#fff;font-weight:900;font-size:clamp(24px,5vw,38px);letter-spacing:3px;text-shadow:0 0 10px #fff,0 0 20px var(--blue),0 0 30px var(--blue);border:1px solid var(--blue);padding:10px 20px;background:rgba(0,229,255,.05);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.sub{color:var(--blue);letter-spacing:1px;font-weight:700;margin-top:10px;text-shadow:0 0 8px rgba(0,229,255,.5);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card{background:linear-gradient(135deg,rgba(12,30,68,.9),rgba(5,11,26,.95));border:1px solid var(--blue);padding:2px;cursor:pointer;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 0 25px rgba(212,175,55,.3)}
+.card-in{background:var(--panel);padding:22px 20px;height:100%;clip-path:polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,15px 100%,0 calc(100% - 15px));position:relative;overflow:hidden}
+.card-in::before{content:"𓂀";position:absolute;left:12px;bottom:0;font-size:60px;color:var(--blue);opacity:.06}
+.card:hover .card-in::before{opacity:.12;color:var(--gold)}
+.tag{color:var(--blue);font-size:11px;letter-spacing:1px;font-weight:900}
+.tt{color:var(--gold);font-size:17px;font-weight:700;margin:6px 0}
+.desc{color:var(--mut);font-size:13px}
+.card-full{grid-column:span 2}
+@media(max-width:640px){.card-full{grid-column:span 1}}
+.panel{margin-top:18px;background:linear-gradient(135deg,var(--blue),var(--gold));padding:1px;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));display:none}
+.panel.active{display:block}
+.pin{background:var(--panel);padding:28px;clip-path:polygon(0 0,calc(100% - 19px) 0,100% 19px,100% 100%,19px 100%,0 calc(100% - 19px))}
+.pt{color:#fff;font-weight:900;font-size:20px;text-shadow:0 0 8px var(--blue);margin-bottom:16px;border-bottom:1px solid rgba(0,229,255,.3);padding-bottom:10px}
+label{color:var(--blue);font-weight:700;font-size:13px;display:block;margin:10px 0 6px}
+input,textarea{width:100%;background:#030710;border:1px solid var(--blue);color:var(--text);padding:12px;font-family:inherit;outline:none;box-shadow:inset 0 0 8px rgba(0,229,255,.05)}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 12px rgba(212,175,55,.3)}
+.btn{background:transparent;color:var(--blue);border:1px solid var(--blue);padding:12px 24px;font-weight:900;letter-spacing:2px;cursor:pointer;font-family:inherit;box-shadow:0 0 10px rgba(0,229,255,.25);transition:.2s}
+.btn:hover{background:var(--blue);color:#040813;box-shadow:0 0 18px var(--blue)}
+.list{list-style:none;padding:0;margin:0}
+.list li{background:rgba(6,15,34,.7);border:1px solid rgba(0,229,255,.2);padding:12px 14px;margin-bottom:10px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.list a{color:var(--gold);text-decoration:none;word-break:break-all}
+.bar{height:8px;background:#0b1a33;border:1px solid rgba(0,229,255,.15);overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--gold))}
+footer{text-align:center;color:var(--mut);font-size:12px;margin-top:24px;letter-spacing:1px}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#071226,#030710);border:2px solid var(--gold);border-image:linear-gradient(45deg,var(--gold),var(--blue),var(--gold)) 1;padding:3px;z-index:9999;min-width:320px;max-width:460px;box-shadow:0 0 25px rgba(212,175,55,.35),0 20px 60px rgba(0,0,0,.9);animation:in .4s ease}
+.toast-in{background:#050c1a;border:1px solid rgba(0,229,255,.2);padding:24px 28px;text-align:center;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.tic{color:var(--blue);letter-spacing:5px;font-size:10px}
+.eye{color:var(--gold);font-size:36px;margin:8px 0;text-shadow:0 0 14px var(--gold)}
+.m{color:#fff;font-weight:900;letter-spacing:3px;font-size:12px;margin-bottom:8px}
+.msg{color:#e2ecf7;font-size:14px}
+@keyframes in{from{opacity:0;transform:translate(-50%,-46%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>بوابة فرعون — المحروسة السيادية</h1>
+<p class="sub">𓋹 SOVEREIGN CODES · TEOS DESKTOP SYSTEM PLATFORM 𓋹</p>
+</header>
 <div class="grid">
-<div class="card" onclick="mode('eval')"><span style="font-size:32px">🔍</span><b>فحص وتقييم المستودع</b><small>Score /100 + شغل مجاني فورا</small></div>
-<div class="card" onclick="mode('import')"><span style="font-size:32px">📥</span><b>استيراد</b><small>GitHub · Gmail · يدوي</small></div>
-<div class="card" onclick="mode('my')"><span style="font-size:32px">📁</span><b>مشروعي</b><small>مشاريعي المحفوظة</small></div>
-<div class="card" onclick="mode('status')"><span style="font-size:32px">📄</span><b>حالتي</b><small>طلباتي وحالتها</small></div>
-<div class="card" onclick="mode('ideas')"><span style="font-size:32px">💡</span><b>خزنة أفكار المحروسة</b><small>كل فكرة لها مكان</small></div>
-<div class="card" onclick="mode('comps')"><span style="font-size:32px">🏆</span><b>المسابقات الثلاثة</b><small>اكسب شهر + توظيف</small></div>
-<div class="card" onclick="mode('contact')"><span style="font-size:32px">🔗</span><b>اتصالات المحروسة</b><small>Telegram · Discord · المواقع</small></div>
+<div class="card" onclick="mode('eval')"><div class="card-in"><div class="tag">LAW // تشريع</div><div class="tt">فحص وتقييم المستودع</div><div class="desc">قياس جودة الكود Score /100 وفتح فترات التشغيل الفوري.</div></div></div>
+<div class="card" onclick="mode('import')"><div class="card-in"><div class="tag">GOVERNANCE // حوكمة</div><div class="tt">استيراد وتكامل</div><div class="desc">سحب ومزامنة المشاريع عبر GitHub أو الإدخال اليدوي.</div></div></div>
+<div class="card" onclick="mode('my')"><div class="card-in"><div class="tag">POLICY // سياسات</div><div class="tt">مشروعي</div><div class="desc">تصفح مشاريعك المحفوظة محليًا.</div></div></div>
+<div class="card" onclick="mode('status')"><div class="card-in"><div class="tag">CODE // تنفيذ</div><div class="tt">حالتي</div><div class="desc">متابعة طلبات الترخيص والموافقات.</div></div></div>
+<div class="card" onclick="mode('ideas')"><div class="card-in"><div class="tag">REPOSITORY // الخزنة</div><div class="tt">خزنة أفكار المحروسة</div><div class="desc">حفظ الأفكار البرمجية بأمان.</div></div></div>
+<div class="card" onclick="mode('comps')"><div class="card-in"><div class="tag">CHALLENGE // التحدي</div><div class="tt">المسابقات الثلاثة</div><div class="desc">اشترك للفوز بجوائز الدعم والتوظيف.</div></div></div>
+<div class="card card-full" onclick="mode('contact')"><div class="card-in"><div class="tag">NETWORKS // الاتصالات</div><div class="tt">اتصالات المحروسة</div><div class="desc">Telegram · Discord · المنصات الرسمية.</div></div></div>
 </div>
-
-<div id="m-eval" class="sec"><h3>فحص المستودع - شغل مجاني تحت المحروسة</h3><input id="repo" placeholder="facebook/react أو رابط github"><button onclick="evaluate()">قيم و افتح لي شغل مجاني</button><div id="rep"></div></div>
-<div id="m-import" class="sec"><h3>استيراد</h3><input id="imp" placeholder="لينك GitHub أو Gmail"><button onclick="doImport()">احفظ</button></div>
-<div id="m-my" class="sec"><h3>مشروعي</h3><div id="myList"></div></div>
-<div id="m-status" class="sec"><h3>حالتي</h3><div id="reqList"></div></div>
-<div id="m-ideas" class="sec"><h3>خزنة أفكار المحروسة - كل فكرة لها مكان</h3><textarea id="ideaTxt" placeholder="ارمي فكرتك هنا..."></textarea><button onclick="saveIdea()">احفظ الفكرة في الخزنة</button><div id="ideaList"></div></div>
-<div id="m-comps" class="sec"><h3>المسابقات الثلاثة</h3><p>1- مسابقة أفضل تقييم مستودع - أعلى Score يكسب</p><p>2- مسابقة أسرع مشروع - من فكرة لـ deploy</p><p>3- مسابقة بنك الأفكار - أفضل فكرة قابلة للتنفيذ</p><button onclick="joinComp()">اشترك الآن</button></div>
-<div id="m-contact" class="sec"><h3>اتصالات المحروسة</h3><p>Telegram: t.me/teosegypt / t.me/teos_engineers</p><p>Discord: discord.gg/teosegypt</p><p>teosegypt.com | desktop.teosegypt.com | market.teosegypt.com</p><p>WhatsApp + Pi: @teosegypt</p></div>
-
+<section class="panel" id="panel-eval"><div class="pin"><div class="pt">🔍 فحص وتقييم المستودع السيادي</div>
+<label for="repo">مسار مستودع الكود (GitHub owner/repo):</label><input id="repo" placeholder="facebook/react أو رابط github" autocomplete="off"><button class="btn" style="margin-top:14px" onclick="evaluate()">إطلاق فاحص المحروسة الرقمي</button><div id="rep" style="margin-top:18px"></div></div></section>
+<section class="panel" id="panel-import"><div class="pin"><div class="pt">📥 استيراد ومزامنة</div><label for="imp">رابط GitHub أو بيانات المشروع:</label><input id="imp" placeholder="https://github.com/owner/repo"><button class="btn" style="margin-top:14px" onclick="doImport()">حفظ في مشروعي</button></div></section>
+<section class="panel" id="panel-my"><div class="pin"><div class="pt">📁 مشروعي</div><ul class="list" id="myList"></ul></div></section>
+<section class="panel" id="panel-status"><div class="pin"><div class="pt">📄 حالتي</div><ul class="list" id="reqList"></ul><button class="btn" style="margin-top:12px" onclick="requestFree()">تقديم طلب ترخيص فترة تشغيل جديدة</button></div></section>
+<section class="panel" id="panel-ideas"><div class="pin"><div class="pt">💡 خزنة أفكار المحروسة</div><textarea id="ideaTxt" rows="3" placeholder="ارمي فكرتك هنا..."></textarea><button class="btn" style="margin-top:12px" onclick="saveIdea()">حفظ الفكرة في الخزنة</button><div id="ideaList" style="margin-top:16px"></div></div></section>
+<section class="panel" id="panel-comps"><div class="pin"><div class="pt">🏆 المسابقات الثلاثة الكبرى</div><div style="margin-bottom:10px">تحدي سكور جودة الكود — أعلى Score يفوز.</div><div style="margin-bottom:10px">ماراثون النشر السريع — من الفكرة إلى خوادم التشغيل الحي.</div><div style="margin-bottom:12px">بنك الأفكار السيادية — أفضل فكرة قابلة للتنفيذ والتوسع.</div><button class="btn" onclick="joinComp()">تسجيل الانضمام الفوري</button></div></section>
+<section class="panel" id="panel-contact"><div class="pin"><div class="pt">🔗 اتصالات المحروسة المعتمدة</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px"><a class="btn" href="https://t.me/teosegypt" target="_blank" rel="noopener">Telegram — teosegypt</a><a class="btn" href="https://t.me/teos_engineers" target="_blank" rel="noopener">المهندسون</a><a class="btn" href="https://discord.gg/teosegypt" target="_blank" rel="noopener">Discord</a><a class="btn" href="https://teosegypt.com" target="_blank" rel="noopener">teosegypt.com</a><a class="btn" href="https://desktop.teosegypt.com" target="_blank" rel="noopener">desktop.teosegypt.com</a><a class="btn" href="https://market.teosegypt.com" target="_blank" rel="noopener">market.teosegypt.com</a></div></div></section>
+<footer>𓂀 EL-MAHROSA · LAW OVER CODE 𓋹</footer>
 <script>
-function mode(m){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');if(m=='my')showMy();if(m=='status')showReq();if(m=='ideas')showIdeas()}
-async function evaluate(){let v=document.getElementById('repo').value.trim().replace('https://github.com/','');let [o,r]=v.split('/');if(!r){alert('اكتب owner/repo');return}let d=document.getElementById('rep');d.innerHTML='بفحص...';try{let res=await fetch(`https://api.github.com/repos/${o}/${r}`);let j=await res.json();if(j.message){d.innerHTML=j.message;return}let score=0;if(j.description)score+=20;let days=(Date.now()-new Date(j.pushed_at))/86400000;if(days<30)score+=20;else if(days<90)score+=10;if(j.size>100)score+=20;score+=20;score+=20;if(score>100)score=100;d.innerHTML=`<h2>${score}/100</h2><p>${j.full_name} - ⭐ ${j.stargazers_count}</p><p>آخر تحديث: ${Math.floor(days)} يوم</p>${score>=60?'<button onclick="requestFree()">اطلب الشهر المجاني + شغل مجاني فورا</button><p style="color:#d4af37">تقدر تبدأ شغل مجاني الآن تحت اسم Elmahrosa - Law Over Code</p>':'<p>حسن المستودع وحاول تاني</p>'}`;localStorage.setItem('lastScore',score);localStorage.setItem('lastRepo',v)}catch(e){d.innerHTML='خطأ في الفحص'}}
-function requestFree(){let n=prompt('اسمك؟');if(!n)return;let reqs=JSON.parse(localStorage.getItem('requests')||'[]');reqs.push({name:n,repo:localStorage.getItem('lastRepo'),score:localStorage.getItem('lastScore'),date:new Date().toISOString(),status:'منتظر موافقة الإدارة - وتقدر تشتغل مجانا الآن'});localStorage.setItem('requests',JSON.stringify(reqs));alert('تم - طلبك منتظر موافقة الإدارة - وفي نفس الوقت تقدر تبدأ شغل مجاني تحت المحروسة');mode('status')}
-function doImport(){let v=document.getElementById('imp').value;if(!v)return;let a=JSON.parse(localStorage.getItem('my_projs')||'[]');a.push({url:v,date:new Date().toISOString()});localStorage.setItem('my_projs',JSON.stringify(a));alert('تم الحفظ');mode('my')}
-function showMy(){let a=JSON.parse(localStorage.getItem('my_projs')||'[]');document.getElementById('myList').innerHTML=a.length?a.map(x=>`<div style="padding:8px;border-bottom:1px solid #333">${x.url} - ${x.date.slice(0,10)}</div>`).join(''):'مفيش مشاريع'}
-function showReq(){let a=JSON.parse(localStorage.getItem('requests')||'[]');document.getElementById('reqList').innerHTML=a.length?a.map(x=>`<div style="padding:8px;border-bottom:1px solid #333">${x.repo} - ${x.score}/100 - ${x.status}</div>`).join(''):'مفيش طلبات'}
-function saveIdea(){let t=document.getElementById('ideaTxt').value;if(!t)return;let a=JSON.parse(localStorage.getItem('ideas')||'[]');a.push({txt:t,date:new Date().toISOString()});localStorage.setItem('ideas',JSON.stringify(a));document.getElementById('ideaTxt').value='';showIdeas();alert('الفكرة اتحفظت في خزنة المحروسة - كل فكرة لها مكان')}
-function showIdeas(){let a=JSON.parse(localStorage.getItem('ideas')||'[]');document.getElementById('ideaList').innerHTML=a.length?a.map(x=>`<div style="padding:8px;border-bottom:1px solid #333">${x.txt} - ${x.date.slice(0,10)} <button onclick="ideaToProject('${x.txt.slice(0,20)}')">حول لمشروع</button></div>`).join(''):'الخزنة فاضية - ارمي أول فكرة'}
-function ideaToProject(t){let a=JSON.parse(localStorage.getItem('my_projs')||'[]');a.push({url:'فكرة: '+t,date:new Date().toISOString()});localStorage.setItem('my_projs',JSON.stringify(a));alert('اتحولت لمشروع')}
-function joinComp(){let n=prompt('اسمك للمسابقة؟');if(!n)return;let a=JSON.parse(localStorage.getItem('comps')||'[]');a.push({name:n,date:new Date().toISOString()});localStorage.setItem('comps',JSON.stringify(a));alert('اشتركت - بالتوفيق - أعلى تقييم يكسب الشهر + التوظيف بشروط المحروسة')}
+var LS_P="my_projs",LS_R="requests",LS_I="ideas",lastRepo="",lastScore=0;
+function $(id){return document.getElementById(id)}
+function g(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(t){return String(t||"").replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function mode(m){document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});var e=$("panel-"+m);if(e)e.classList.add('active');if(m=="my")rmy();if(m=="status")rr();if(m=="ideas")ri()}
+function parse(u){u=(u||"").trim();var m=u.match(/github\.com\/([^\/\s]+)\/([^\/\s#?]+)/i)||u.match(/^([\w.\-]+)\/([\w.\-]+)$/);return m?{o:m[1],r:m[2].replace(/\.git$/i,"")}:null}
+async function evaluate(){var p=parse($("repo").value);if(!p){toast("اكتب owner/repo");return}var api="https://api.github.com/repos/"+p.o+"/"+p.r;try{var res=await fetch(api,{headers:{Accept:"application/vnd.github+json"}});if(!res.ok)throw new Error("لم يتم العثور على المستودع");var d=await res.json();var read=0;try{var rr=await fetch(api+"/readme");if(rr.ok)read=20}catch(e){}var names=[],struct=0;try{var cr=await fetch(api+"/contents/");if(cr.ok){var fs=await cr.json();if(Array.isArray(fs))names=fs.map(function(f){return(f.name||"").toLowerCase()})}}catch(e){}var sh=["src","lib","package.json","tests","test","docs",".github"].filter(function(k){return names.indexOf(k)>-1}).length;struct=Math.min(sh,4)*5;var days=(Date.now()-new Date(d.pushed_at||d.updated_at))/864e5;var fresh=days<=30?20:days<=90?15:days<=180?10:days<=365?5:0;var score=read+fresh+struct+20+20;lastRepo="https://github.com/"+p.o+"/"+p.r;lastScore=score;var out='<div style="color:var(--gold);font-size:26px;font-weight:900">'+score+'/100</div><div style="color:#fff;font-weight:700">'+esc(d.full_name)+" — "+(score>=60?"مقبول وواعد ✨":"يحتاج تحسينًا 🔧")+'</div><div class="bar" style="margin-top:10px"><i style="width:'+Math.min(score,100)+'%"></i></div>';if(score>=60)out+='<button class="btn" style="margin-top:12px" onclick="requestFree()">اطلب الشهر المجاني + شغل مجاني فورا</button>';$("rep").innerHTML=out}catch(e){$("rep").innerHTML='<div class="desc">تعذّر الفحص</div>'}}
+function requestFree(){var n=prompt("اسمك؟");if(!n)return;var r=g(LS_R,[]);r.unshift({n:n,repo:lastRepo,score:lastScore,at:new Date().toISOString(),s:"منتظر موافقة الإدارة"});s(LS_R,r);toast("تم - طلبك منتظر موافقة الإدارة");mode("status")}
+function doImport(){var v=$("imp").value.trim();if(!v)return;var a=g(LS_P,[]);a.unshift({url:v,at:new Date().toISOString()});s(LS_P,a);toast("تم الحفظ");mode("my")}
+function saveIdea(){var t=$("ideaTxt").value.trim();if(!t){toast();return}var a=g(LS_I,[]);a.unshift({t:t,at:new Date().toISOString()});s(LS_I,a);$("ideaTxt").value="";ri();toast("تم حفظ الفكرة في الخزنة")}
+function joinComp(){var n=prompt("اسمك للمسابقة؟");if(!n)return;toast("تم الاشتراك بنجاح")}
+function rmy(){var a=g(LS_P,[]);$("myList").innerHTML=a.length?a.map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank">'+esc(x.url)+'</a><div class="desc">'+x.at.slice(0,10)+'</div></li>'}).join(""):'<li class="desc">مفيش مشاريع</li>'}
+function rr(){var a=g(LS_R,[]);$("reqList").innerHTML=a.length?a.map(function(x){return '<li><b>'+esc(x.n)+'</b> — '+esc(x.score)+'/100 — '+esc(x.s)+'<div class="desc">'+x.at.slice(0,10)+'</div></li>'}).join(""):'<li class="desc">لا طلبات بعد</li>'}
+function ri(){var a=g(LS_I,[]);$("ideaList").innerHTML=a.length?a.map(function(x){return '<li>'+esc(x.t)+'<div class="desc">'+x.at.slice(0,10)+'</div></li>'}).join(""):'<li class="desc">الخزنة فاضية</li>'}
+function toast(m){m=m||"الفكرة اتحفظت في خزنة المحروسة - كل فكرة لها مكان";var o=$("t");if(o)o.remove();var c=document.createElement("div");c.id="t";c.className="toast";c.innerHTML='<div class="toast-in"><div class="tic">𓇋 𓏏 𓎛 𓇋 𓏏 𓎛 𓇋 𓏏 𓎛</div><div class="eye">𓂀</div><div class="m">𓋹 EL-MAHROSA 𓋹</div><div class="msg">'+esc(m)+'</div><button class="btn" style="margin-top:14px;padding:8px 24px" onclick="this.parentElement.parentElement.remove()">𓂀 موافق</button></div>';document.body.appendChild(c);setTimeout(function(){var x=$("t");if(x)x.remove()},4500)}
+rmy();rr();ri();
 </script>
-</body></html>
+</div>
+</body>
+</html>
